@@ -12,8 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.min.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
         var circles = [];
-       
+        var sound = new Howl({
+        src: ['./assets/sounds/bubbles.mp3']
+        });
         function onKeyDown(event) {
+            sound.play();
             var maxPoint = new Point(view.size.width, view.size.height);
             var randomPoint =  new Point(Math.random(), Math.random());
             var point = maxPoint * randomPoint;
@@ -21,21 +24,20 @@
             myCircle.fillColor = 'yellow';
             circles.push(myCircle);
         }
-        // var animatedCircle = new Path.Circle((300,300), 100);
-        // animatedCircle.fillColor = 'red';
         function onFrame(event) {
             for(var i=0; i < circles.length; i++){
                 circles[i].fillColor.hue += 1;
                 circles[i].scale(.9);
             }
         }
-       
+        </script>
+        <script>
+
         </script>
 </head>
 
 <body>
     <canvas id="myCanvas" resize></canvas>
-    </script>
     <!-- Jquery Min -->
     <script src="./assets/js/lib/jquery.min.js"></script>
     <!-- JS -->
